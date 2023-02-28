@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('who')->default(0)->comment('0 ise kullanıcı 1 ise yönetici');
         });
     }
 

@@ -1,0 +1,6 @@
+projeyi çalıştırmak için : php artisan serve
+projedeki veritabanını localhosta aktarmak için->php artisan migrate
+veritabanı tablosunda yapılan değişiklikleri localhostta güncellemek için-> php artisan migrate:fresh
+model oluşturmak için ->php artisan make:model Modeladi
+Veritabanı tablosu oluşturmak için ->php artisan make:migration tabloadi --create=tabloadis
+model ve tabloyu aynı anda oluşturmak için-> php artisan make:model -m Modeladi
