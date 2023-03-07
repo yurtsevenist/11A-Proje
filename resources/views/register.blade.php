@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Adomx - Responsive Bootstrap 4 Admin Template</title>
+    <title>Üye Kayıt</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,33 +48,40 @@
                         <div class="login-register-form-wrap">
 
                             <div class="content">
-                                <h1>Sign in</h1>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <h1>Üye Kayıt</h1>
+                                <p>Formdaki alanları eksiksiz doldururak üye olabilirsiniz.</p>
                             </div>
-
+                            @if ($errors->any())
+                            <div class="alert alert-danger" role="alert">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </div>
+                            @endif
                             <div class="login-register-form">
-                                <form action="{{route('loginPost')}}" method="POST">
+                                <form action="{{route('registerPost')}}" method="POST">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-12 mb-20"><input class="form-control" type="text" name="email" placeholder="E-Posta Adresiniz" required></div>
-                                        <div class="col-12 mb-20"><input class="form-control" type="password" name="password" placeholder="Şifreniz" required></div>
-                                        <div class="col-12 mb-20"><label for="remember" class="adomx-checkbox-2"><input id="remember" name="remember" type="checkbox"><i class="icon"></i>Beni Hatırla.</label></div>
+                                        <div class="col-12 mb-20"><input class="form-control" type="text" name="name" required value="{{old('name')}}" placeholder="Adınız Soyadınız"></div>
+                                        <div class="col-12 mb-20"><input class="form-control" type="email" name="email" value="{{old('email')}}" required placeholder="E-Posta Adresiniz"></div>
+                                        <div class="col-12 mb-20"><input class="form-control" type="password" name="password"  required placeholder="Şifreniz"></div>
+                                        <div class="col-12 mb-20"><input class="form-control" type="password" name="password_confirmation"  required placeholder="Şifre Tekrar"></div>
                                         <div class="col-12">
                                             <div class="row justify-content-between">
-                                                <div class="col-auto mb-15"><a href="#">Şifremi Hatırlamıyorum?</a></div>
-                                                <div class="col-auto mb-15">Henüz Üye Değilim? <a href="{{url('register')}}">Yeni Üye</a></div>
+                                                <div class="col-auto mb-15">Üyeliğim var? <a href="{{url('/')}}">Giriş yap.</a></div>
                                             </div>
                                         </div>
-                                        <div class="col-12 mt-10"><button type="submit" class="button button-primary button-outline">Giriş</button></div>
+                                        <div class="col-12 mt-10"><button type="submit" class="button button-primary button-outline">Üye Ol</button></div>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>
 
                     <div class="login-register-bg order-1 order-lg-2 col-lg-7 col-12">
                         <div class="content">
-                            <h1>Sign in</h1>
+                            <h1>Sign up</h1>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                         </div>
                     </div>

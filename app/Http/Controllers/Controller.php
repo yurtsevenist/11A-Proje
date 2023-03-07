@@ -8,7 +8,10 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\RegisterPostRequest;
+
 
 class Controller extends BaseController
 {
@@ -31,5 +34,52 @@ class Controller extends BaseController
         toastr()->info('Güle Güle '.Auth::user()->name, 'Uğurlama');
         Auth::logout();
         return view('login');
+    }
+    public function registerPost2(Request $request)
+    {
+        try {
+
+            $ara=User::whereEmail($request->email)->first();//e-posta adresi daha önce kayıt edilmişmi
+            if($ara)
+            {
+                toastr()->error('Bu E-Posta daha önce kayıt edilmiş','Hata');
+                return redirect()->back();
+            }
+            if($request->password!=$request->password_confirmation)
+            {
+                toastr()->error('Şifre ve Şifre Tekrarı Eşleşmiyor','Hata');
+                return redirect()->back();
+            }
+            $user=new User;
+            $user->name=$request->name;
+            $user->email=$request->email;
+            $user->password=Hash::make($request->password);
+            $user->save();
+            toastr()->success('Üyeliğiniz tamalanmıştır','Başarılı');
+            return view('login');
+
+        } catch (\Throwable $th) {
+
+           toastr()->error($th,'Hata');
+           return redirect()->back();
+        }
+    }
+    public function registerPost(RegisterPostRequest $request)
+    {
+        $request->flash();
+        try {
+
+            $user=new User;
+            $user->name=$request->name;
+            $user->email=$request->email;
+            $user->password=Hash::make($request->password);
+            $user->save();
+           toastr()->success('Üyeliğiniz tamalanmıştır','Başarılı');
+           return view('login');
+        } catch (\Throwable $th) {
+            toastr()->error($th,'Hata');
+            return redirect()->back();
+        }
+
     }
 }
