@@ -81,8 +81,8 @@
 
                     <div class="login-register-bg order-1 order-lg-2 col-lg-7 col-12">
                         <div class="content">
-                            <h1>Sign up</h1>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <h1>Üye Ol</h1>
+                            <p>Formdaki alanları eksiksiz doldururak üye olabilirsiniz.</p>
                         </div>
                     </div>
 

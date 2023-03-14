@@ -265,7 +265,7 @@
                                             </div>
                                             <div class="body">
                                                 <ul>
-                                                    <li><a href="#"><i class="zmdi zmdi-account"></i>Profile</a></li>
+                                                    <li><a href="{{url('profil')}}"><i class="zmdi zmdi-account"></i>Profile</a></li>
                                                     <li><a href="#"><i class="zmdi zmdi-email-open"></i>Inbox</a></li>
                                                     <li><a href="#"><i class="zmdi zmdi-wallpaper"></i>Activity</a></li>
                                                 </ul>

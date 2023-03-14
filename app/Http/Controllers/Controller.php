@@ -11,7 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterPostRequest;
-
+use Illuminate\Support\Str;
 
 class Controller extends BaseController
 {
@@ -76,6 +76,32 @@ class Controller extends BaseController
             $user->save();
            toastr()->success('Üyeliğiniz tamalanmıştır','Başarılı');
            return view('login');
+        } catch (\Throwable $th) {
+            toastr()->error($th,'Hata');
+            return redirect()->back();
+        }
+
+    }
+    public function userUpdatePost(Request $request)
+    {
+
+        try {
+            if(Str::length($request->password)<6)
+            {
+                toastr()->error('Şifreniz en az 6 karakter olmalıdır','Hata');
+                return redirect()->back();
+            }
+            if($request->password!=$request->password_confirmation)
+            {
+                toastr()->error('Şifre ve Şifre Tekrarı Eşleşmiyor','Hata');
+                return redirect()->back();
+            }
+            $user=User::whereId(Auth::user()->id)->first();
+            $user->name=$request->name;
+            $user->password=Hash::make($request->password);
+            $user->save();
+           toastr()->success('Bilgileriniz Güncellenmiştir','Başarılı');
+           return redirect()->back();
         } catch (\Throwable $th) {
             toastr()->error($th,'Hata');
             return redirect()->back();

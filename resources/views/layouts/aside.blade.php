@@ -6,7 +6,10 @@
 
         <nav class="side-header-menu" id="side-header-menu">
             <ul>
-                <li><a href="#"><i class="ti-home"></i> <span>Anasayfa</span></a></li>
+                <li><a href="{{url('main')}}"><i class="ti-home"></i> <span>Anasayfa</span></a></li>
+            </ul>
+            <ul>
+                <li><a href="{{url('profil')}}"><i class="ti-user"></i> <span>Profil</span></a></li>
             </ul>
         </nav>
 

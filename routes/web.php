@@ -19,8 +19,16 @@ Route::get('/', function () {
 Route::get('register', function () {
     return view('register');
 });
+Route::get('profil', function () {
+    return view('profil');
+});
+Route::get('main', function () {
+    return view('main');
+});
+
 Route::post('loginPost', [Controller::class, 'loginPost'])->name('loginPost');
 Route::get('signOut', [Controller::class, 'signOut'])->name('signOut');
 Route::post('registerPost', [Controller::class, 'registerPost'])->name('registerPost');
+Route::post('userUpdatePost', [Controller::class, 'userUpdatePost'])->name('userUpdatePost');
 
 
