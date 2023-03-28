@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterPostRequest;
 use Illuminate\Support\Str;
+use App\Models\Product;
+
 
 class Controller extends BaseController
 {
@@ -119,6 +121,7 @@ class Controller extends BaseController
     }
     public function products()
     {
-        return view('products');
+        $urunler=Product::get();
+        return view('products',compact('urunler'));
     }
 }
