@@ -27,7 +27,26 @@
                                     </tr>
                                 </thead>
                               <tbody>
-
+                                @php($sira=0)
+                                  @foreach ($urunler as $urun)
+                                  @php($sira++)
+                                    <tr>
+                                        <td class="text-center">{{$sira}}</td>
+                                        <td><img src="{{$urun->photo}}" width="50px" alt="" srcset=""></td>
+                                        <td>{{$urun->name}}</td>
+                                        <td>{{$urun->code}}</td>
+                                        <td>{{$urun->category}}</td>
+                                        <td>{{$urun->price}}</td>
+                                        <td>{{$urun->number}}</td>
+                                        <td>{{$urun->color}}</td>
+                                        <td>{{$urun->size}}</td>
+                                        <td class="text-center">
+                                           <a class="btn btn-sm btn-info" title="Görüntüle" href="#"><i class="ti-eye"></i></a>
+                                           <a class="btn btn-sm btn-primary" title="Güncelle" href="#"><i class="ti-pencil-alt"></i></a>
+                                           <a class="btn btn-sm btn-danger" title="Sil" href="#"><i class="ti-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                  @endforeach
                               </tbody>
 
                             </table>
