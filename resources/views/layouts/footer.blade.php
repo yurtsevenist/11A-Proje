@@ -44,6 +44,9 @@
 <script src="{{asset('admintema')}}/assets/js/plugins/vmap/maps/samples/jquery.vmap.sampledata.js"></script>
 <script src="{{asset('admintema')}}/assets/js/plugins/vmap/vmap.active.js"></script>
 
+  <!-- Plugins & Activation JS For Only This Page -->
+  <script src="{{asset('admintema')}}/assets/js/plugins/datatables/datatables.min.js"></script>
+  <script src="{{asset('admintema')}}/assets/js/plugins/datatables/datatables.active.js"></script>
 </body>
 
 </html>
