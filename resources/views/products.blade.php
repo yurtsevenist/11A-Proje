@@ -7,7 +7,14 @@
                    <div class="col-12 mb-30">
                     <div class="box">
                         <div class="box-head">
-                            <h3 class="title">Ürün Listesi</h3>
+                           <div class="row">
+                            <div class="col-md-8 col-8">
+                                <h3 class="title">Ürün Listesi</h3>
+                            </div>
+                            <div class="col-md-4 col-4 text-right">
+                                <a class="btn btn-md btn-dark" title="Ürün Ekle" href="#"><i class="ti-plus"></i></a>
+                            </div>
+                           </div>
                         </div>
                         <div class="box-body">
 

@@ -121,7 +121,7 @@ class Controller extends BaseController
     }
     public function products()
     {
-        $urunler=Product::get();
+        $urunler=Product::orderBy('number','ASC')->get();
         return view('products',compact('urunler'));
     }
 }
