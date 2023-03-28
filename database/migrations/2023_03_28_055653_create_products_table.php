@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('name');
+            $table->string('photo')->nullable();
+            $table->string('info')->nullable();
+            $table->string('category')->nullable();
+            $table->string('size')->nullable();
+            $table->string('color')->nullable();
+            $table->double('price')->default(0);
+            $table->integer('point')->default(0);
+            $table->integer('number')->default(0);
             $table->timestamps();
         });
     }
