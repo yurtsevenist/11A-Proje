@@ -1,0 +1,9 @@
+Soru: Githubtan Laravel projesi indirirsek çalıştırmak için izleyeceğimiz yol
+- .env.example dosyasını kopyala yapıştır yapıyoruz
+- .env.example.copy dosyasının adını .env şeklinde değiştiriyoruz
+- .env dosyasındaki veritabanı ismini kendi veritabanı ismimiz ile değiştiriyoruz
+- eğer veritabanımız yoksa localhostta veritabanımızı oluşturuyoruz
+- composer update komutunu çalıştırıyoruz fatih ağında vpn çalışmak zorunda
+- php artisan key:generate komutunu çalıştırıyoruz
+- php artisan migrate:fresh --seed komutunu çalıştırıyoruz
+- php artisan serve komutuyla projemizi çalıştırıyoruz

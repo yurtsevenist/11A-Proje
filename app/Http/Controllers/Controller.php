@@ -20,8 +20,17 @@ class Controller extends BaseController
     {
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            toastr()->success('Hoşgeldin '.Auth::user()->name, 'Karşılama');
-            return view('main');
+            if(Auth::user()->who==1)
+            {
+                toastr()->success('Hoşgeldin '.Auth::user()->name, 'Karşılama');
+                return view('main');
+            }
+            else
+            {
+                toastr()->info('Sayın '.Auth::user()->name.' yönetici yetkiniz bulunmamaktadır', 'Bilgilendirme');
+                return view('login');
+            }
+
         }
 
             toastr()->error('Şifreniz veya kullanıcı adınız hatalı ','Hata');
