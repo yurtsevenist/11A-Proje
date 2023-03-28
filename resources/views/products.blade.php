@@ -7,7 +7,7 @@
                    <div class="col-12 mb-30">
                     <div class="box">
                         <div class="box-head">
-                            <h3 class="title">Export Data Table</h3>
+                            <h3 class="title">Ürün Listesi</h3>
                         </div>
                         <div class="box-body">
 
