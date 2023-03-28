@@ -9,6 +9,9 @@
                 <li><a href="{{url('main')}}"><i class="ti-home"></i> <span>Anasayfa</span></a></li>
             </ul>
             <ul>
+                <li><a href="{{route('products')}}"><i class="ti-bag"></i> <span>Ürünler</span></a></li>
+            </ul>
+            <ul>
                 <li><a href="{{url('profil')}}"><i class="ti-user"></i> <span>Profil</span></a></li>
             </ul>
         </nav>

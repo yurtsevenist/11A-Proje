@@ -117,4 +117,8 @@ class Controller extends BaseController
         }
 
     }
+    public function products()
+    {
+        return view('products');
+    }
 }
