@@ -124,4 +124,11 @@ class Controller extends BaseController
         $urunler=Product::orderBy('number','ASC')->get();
         return view('products',compact('urunler'));
     }
+    public function productDelete(Request $request)
+    {
+        $urun=Product::whereId($request->id)->first();
+        $urun->delete();
+        toastr()->success('Ürün Silinmiştir','Başarılı');
+        return redirect()->back();
+    }
 }

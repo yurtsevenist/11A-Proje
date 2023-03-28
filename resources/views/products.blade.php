@@ -50,8 +50,9 @@
                                         <td class="text-center">
                                            <a class="btn btn-sm btn-info" title="Görüntüle" href="#"><i class="ti-eye"></i></a>
                                            <a class="btn btn-sm btn-primary" title="Güncelle" href="#"><i class="ti-pencil-alt"></i></a>
-                                           <a class="btn btn-sm btn-danger" title="Sil" href="#"><i class="ti-trash"></i></a>
-                                        </td>
+                                           <a class="delete-click btn btn-danger btn-sm" href="#" pid={{$urun->id}} title="Ürünü Sil"><i class="ti-trash"></i></a>
+
+                                      </td>
                                     </tr>
                                   @endforeach
                               </tbody>
@@ -64,4 +65,6 @@
                 <!--Export Data Table End-->
              </div>
         </div><!-- Content Body End -->
+ 
+        @include('productDeleteModal')
      @endsection

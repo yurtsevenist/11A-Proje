@@ -28,6 +28,7 @@ Route::get('main', function () {
 
 Route::post('loginPost', [Controller::class, 'loginPost'])->name('loginPost');
 Route::get('products', [Controller::class, 'products'])->name('products');
+Route::post('productDelete', [Controller::class, 'productDelete'])->name('productDelete');
 Route::get('signOut', [Controller::class, 'signOut'])->name('signOut');
 Route::post('registerPost', [Controller::class, 'registerPost'])->name('registerPost');
 Route::post('userUpdatePost', [Controller::class, 'userUpdatePost'])->name('userUpdatePost');

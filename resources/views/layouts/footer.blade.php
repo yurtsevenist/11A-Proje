@@ -47,6 +47,7 @@
   <!-- Plugins & Activation JS For Only This Page -->
   <script src="{{asset('admintema')}}/assets/js/plugins/datatables/datatables.min.js"></script>
   <script src="{{asset('admintema')}}/assets/js/plugins/datatables/datatables.active.js"></script>
+  
 </body>
 
 </html>
