@@ -1,6 +1,13 @@
 projeyi çalıştırmak için : php artisan serve
 projedeki veritabanını localhosta aktarmak için->php artisan migrate
 veritabanı tablosunda yapılan değişiklikleri localhostta güncellemek için-> php artisan migrate:fresh
+veritabanına dummy data aktarmak için : php artisan migrate:fresh --seed
 model oluşturmak için ->php artisan make:model Modeladi
 Veritabanı tablosu oluşturmak için ->php artisan make:migration tabloadi --create=tabloadis
 model ve tabloyu aynı anda oluşturmak için-> php artisan make:model -m Modeladi
+github üzerinen proje indirilirse sırasıyla:
+1- .env dosyasını .env.example dosyasını kopyala yapıştır ile oluşturabilirsiniz
+2- paket güncellemeleri için : composer update
+3- projeye key oluşturmak için : php artisan key:generate
+
+projeye request oluşturmak için: php artisan make:request RequestAdi
