@@ -14,16 +14,20 @@
                             <table class="table table-bordered data-table data-table-export">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Sıra</th>
+                                        <th>Görsel</th>
+                                        <th>Ürün Adı</th>
+                                        <th>Ürün Kodu</th>
+                                        <th>Kategori</th>
+                                        <th>Fiyatı</th>
+                                        <th>Adedi</th>
+                                        <th>Renk</th>
+                                        <th>Beden</th>
+                                        <th>İşlemler</th>
                                     </tr>
                                 </thead>
                               <tbody>
-                                
+
                               </tbody>
 
                             </table>
