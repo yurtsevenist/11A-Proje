@@ -50,7 +50,7 @@
                                         <td class="text-center">
                                            <a class="btn btn-sm btn-info" title="Görüntüle" href="#"><i class="ti-eye"></i></a>
                                            <a class="btn btn-sm btn-primary" title="Güncelle" href="#"><i class="ti-pencil-alt"></i></a>
-                                           <a class="delete-click btn btn-danger btn-sm" href="#" pid={{$urun->id}} title="Ürünü Sil"><i class="ti-trash"></i></a>
+                                           <a class="delete-click btn btn-danger btn-sm text-white"  pid={{$urun->id}} title="Ürünü Sil"><i class="ti-trash"></i></a>
 
                                       </td>
                                     </tr>
@@ -64,7 +64,25 @@
                 </div>
                 <!--Export Data Table End-->
              </div>
+             @include('productDeleteModal')
         </div><!-- Content Body End -->
- 
-        @include('productDeleteModal')
+
+
      @endsection
+    @section('css')
+
+    @endsection
+    @section('js')
+     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>  --}}
+
+    <script>
+        $(function(){
+           $('.delete-click').click(function(){
+            id = $(this)[0].getAttribute('pid');
+           // console.log(id);
+            $('#id').val(id);
+            $('#productDelete').modal();
+           });
+        });
+ </script>
+    @endsection

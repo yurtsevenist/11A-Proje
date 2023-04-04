@@ -16,7 +16,7 @@ return [
     'options' => [
         'closeButton'       => true,
         'closeClass'        => 'toast-close-button',
-        'closeDuration'     => 300,
+        'closeDuration'     => 100,
         'closeEasing'       => 'swing',
         'closeHtml'         => '<button><i class="icon-off"></i></button>',
         'closeMethod'       => 'fadeOut',
@@ -44,7 +44,7 @@ return [
         'progressBar'       => true,
         'progressClass'     => 'toast-progress',
         'rtl'               => false,
-        'showDuration'      => 300,
+        'showDuration'      => 50,
         'showEasing'        => 'swing',
         'showMethod'        => 'fadeIn',
         'tapToDismiss'      => true,

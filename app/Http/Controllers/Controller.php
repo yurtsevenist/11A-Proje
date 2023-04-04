@@ -128,7 +128,7 @@ class Controller extends BaseController
     {
         $urun=Product::whereId($request->id)->first();
         $urun->delete();
-        toastr()->success('Ürün Silinmiştir','Başarılı');
-        return redirect()->back();
+      
+        return redirect()->route('products');
     }
 }

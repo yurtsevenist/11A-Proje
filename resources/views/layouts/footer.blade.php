@@ -18,7 +18,7 @@
 <script src="{{asset('admintema')}}/assets/js/vendor/modernizr-3.6.0.min.js"></script>
 <script src="{{asset('admintema')}}/assets/js/vendor/jquery-3.3.1.min.js"></script>
 <script src="{{asset('admintema')}}/assets/js/vendor/popper.min.js"></script>
-<script src="{{asset('admintema')}}/assets/js/vendor/bootstrap.min.js"></script>
+
 <!--Plugins JS-->
 <script src="{{asset('admintema')}}/assets/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="{{asset('admintema')}}/assets/js/plugins/tippy4.min.js.js"></script>
@@ -47,7 +47,9 @@
   <!-- Plugins & Activation JS For Only This Page -->
   <script src="{{asset('admintema')}}/assets/js/plugins/datatables/datatables.min.js"></script>
   <script src="{{asset('admintema')}}/assets/js/plugins/datatables/datatables.active.js"></script>
-  
+
+  <script src="{{asset('admintema')}}/assets/js/vendor/bootstrap.min.js"></script>
+  @yield('js')
 </body>
 
 </html>

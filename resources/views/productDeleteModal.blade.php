@@ -25,16 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <script>
-                    $(function(){
-                       $('.delete-click').click(function(){
-                        id = $(this)[0].getAttribute('pid');
-                       // console.log(id);
-                        $('#id').val(id);
-                        $('#productDelete').modal('show');
-                       });
-                    });
-             </script>
+                
 
 
 
