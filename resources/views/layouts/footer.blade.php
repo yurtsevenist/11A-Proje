@@ -16,7 +16,7 @@
 
 <!-- Global Vendor, plugins & Activation JS -->
 <script src="{{asset('admintema')}}/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-<script src="{{asset('admintema')}}/assets/js/vendor/jquery-3.3.1.min.js"></script>
+ <script src="{{asset('admintema')}}/assets/js/vendor/jquery-3.3.1.min.js"></script>
 <script src="{{asset('admintema')}}/assets/js/vendor/popper.min.js"></script>
 
 <!--Plugins JS-->

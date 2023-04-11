@@ -12,6 +12,9 @@
                 <li><a href="{{route('products')}}"><i class="ti-bag"></i> <span>Ürünler</span></a></li>
             </ul>
             <ul>
+                <li><a href="{{url('customers')}}"><i class="ti-user"></i> <span>Müşteriler</span></a></li>
+            </ul>
+            <ul>
                 <li><a href="{{url('profil')}}"><i class="ti-user"></i> <span>Profil</span></a></li>
             </ul>
         </nav>

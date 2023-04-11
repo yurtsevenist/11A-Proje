@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Adomx - Responsive Bootstrap 4 Admin Template</title>
+    <title>Şifremi Unuttum</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,24 +48,37 @@
                         <div class="login-register-form-wrap">
 
                             <div class="content">
-                                <h1>Sign in</h1>
+                                <h1>Şifre Sıfırlama</h1>
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                             </div>
 
                             <div class="login-register-form">
-                                <form action="{{route('loginPost')}}" method="POST">
+                                @if ($errors->any())
+                                <div class="alert alert-danger" role="alert">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </div>
+                                @endif
+                                @if (Session::has('success'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ Session::get('success') }}
+                                </div>
+                                 @endif
+                                <form action="{{route('forgotPost')}}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12 mb-20"><input class="form-control" type="text" name="email" placeholder="E-Posta Adresiniz" required></div>
-                                        <div class="col-12 mb-20"><input class="form-control" type="password" name="password" placeholder="Şifreniz" required></div>
-                                        <div class="col-12 mb-20"><label for="remember" class="adomx-checkbox-2"><input id="remember" name="remember" type="checkbox"><i class="icon"></i>Beni Hatırla.</label></div>
+
+
                                         <div class="col-12">
                                             <div class="row justify-content-between">
-                                                <div class="col-auto mb-15"><a href="{{route('forgot')}}">Şifremi Hatırlamıyorum?</a></div>
-                                                <div class="col-auto mb-15">Henüz Üye Değilim? <a href="{{url('register')}}">Yeni Üye</a></div>
+                                                <div class="col-auto mb-15"><button type="submit" class="button button-primary button-outline">Şifre Sıfırlama</button></div>
+                                                <div class="col-auto mb-15"><a href="{{url('login')}}">Giriş</a></div>
+
                                             </div>
                                         </div>
-                                        <div class="col-12 mt-10"><button type="submit" class="button button-primary button-outline">Giriş</button></div>
+                                        <div class="col-12 mt-10">Henüz Üye Değilim? <a href="{{url('register')}}">Yeni Üye</a></div>
                                     </div>
                                 </form>
                             </div>
