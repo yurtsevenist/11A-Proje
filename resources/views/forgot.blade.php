@@ -60,11 +60,7 @@
                                     @endforeach
                                 </div>
                                 @endif
-                                @if (Session::has('success'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ Session::get('success') }}
-                                </div>
-                                 @endif
+
                                 <form action="{{route('forgotPost')}}" method="POST">
                                     @csrf
                                     <div class="row">

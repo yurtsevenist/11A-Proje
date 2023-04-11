@@ -145,17 +145,28 @@ class Controller extends BaseController
         ]);
 
 
-        $token = Str::random(64);
-        try {
-            DB::table('password_resets')->insert([
-                'email' => $request->email,
-                'token' => $token,
-                'created_at' => Carbon::now(),
-            ]);
 
-        } catch (\Throwable $th) {
-            return back()->withError('Hata!', 'Daha önce bir link gönderilmiş!');
-        }
+
+            $tokens = DB::table('password_resets')->where('email', $request->email)->get();
+            foreach($tokens as $t)
+            {
+
+                $fark=Carbon::now()->diffInDays(Carbon::parse($t->created_at));
+                if($fark>=1)
+                {
+
+                    DB::table('password_resets')->where('token', $t->token)->delete();
+                }
+
+            }
+
+            $token = Str::random(64);
+
+            DB::table('password_resets')->insert(
+                ['email' => $request->email, 'token' => $token, 'created_at' => Carbon::now()]
+            );
+
+
         $action_link = route('reset', ['token' => $token, 'email' => $request->email]);
         $body = "Şifreni Sıfırlamak İstediğini Duyduk  ." . $request->email .
             ". Linke Tıklayarak Şifre Sıfırlama Bağlantısına Gidebilirsin";
@@ -167,7 +178,7 @@ class Controller extends BaseController
                 ->subject('Reset Password');
         });
 
-        return back()->withSuccess('Başarılı!', 'Şifre Sıfırlama Bağlantısını Gönderdik!');
+        return back()->withSuccess('Şifre Sıfırlama Bağlantısını Gönderdik!');
     }
     public function resetPassword(Request $request){
         $request->validate([
