@@ -162,7 +162,7 @@ class Controller extends BaseController
 
 
         Mail::send('email-forgot', ['action_link' => $action_link, 'body' => $body], function ($message) use ($request) {
-            $message->from('kayasinav@gmail.com', 'Sınav Kaya');
+            $message->from('sinav@ihmtal.com', 'Sınav Kaya');
             $message->to($request->email, 'Kaya')
                 ->subject('Reset Password');
         });

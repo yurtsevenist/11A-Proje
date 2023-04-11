@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -34,58 +37,62 @@
 
 </head>
 
-<body>
+<body class="skin-dark">
 
-    <!-- preloader area start -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- preloader area end -->
-    <!-- login area start -->
-    <div class="login-area login-bg">
-        <div class="container">
-            <div class="login-box ptb--100">
-            <form action="{{route('resetPassword')}}" method="POST">
-            @csrf
-            <input type="hidden" name="token" value="{{ $token }}">
-                    <div class="login-form-head">
-                        <h4 >Şifreyi Değiştir</h4>
-                        <p></p>
-                    </div>
-                    <div class="login-form-body">
-                        <div class="form-gp">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="text" readonly name="email" value="{{ $email ?? old
-                                ('email')}}">
-                            <i class="ti-email"></i>
-                        </div>
-                        <div class="form-gp">
-                            <label for="exampleInputPassword1">Şifre</label>
-                            <input type="password" name="password">
-                            <i class="ti-lock"></i>
-                        </div>
-                        <div class="form-gp">
-                            <label for="exampleInputPassword1">Şifre Tekrarı</label>
-                            <input type="password" name="password_confirmation">
-                            <i class="ti-lock"></i>
-                        </div>
-                        <div class="submit-btn-area">
-                            <button id="form_submit" type="submit">Şifreyi Değiştir <i class="ti-arrow-right"></i></button>
-                            <div class="login-other row mt-4">
+    <div class="main-wrapper">
+
+        <!-- Content Body Start -->
+        <div class="content-body m-0 p-0">
+
+            <div class="login-register-wrap">
+                <div class="row">
+
+                    <div class="d-flex align-self-center justify-content-center order-2 order-lg-1 col-lg-5 col-12">
+                        <div class="login-register-form-wrap">
+
+                            <div class="content">
+                                <h1>Şifre Değiştirme</h1>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+
+                            <div class="login-register-form">
+                                <form action="{{route('resetPassword')}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="token" value="{{ $token }}">
+                                    <div class="row">
+                                        <div class="col-12 mb-20"><input class="form-control" type="text" readonly name="email" value="{{ $email ?? old
+                                            ('email')}}" placeholder="E-Posta Adresiniz" required></div>
+                                        <div class="col-12 mb-20"><input class="form-control" type="password" name="password" placeholder="Şifreniz" required></div>
+                                        <div class="col-12 mb-20"><input class="form-control" type="password" name="password_confirmation" placeholder="Şifreniz Tekrar" required></div>
+                                        <div class="col-12 mt-10"><button type="submit" class="button button-primary button-outline">Güncelle</button></div>
+                                        <div class="col-12">
+                                            <div class="row justify-content-between">
+                                                <div class="col-auto mb-15"></div>
+                                                <div class="col-auto mb-15"><a href="{{url('login')}}">Giriş</a></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="form-footer text-center mt-2">
-                            <p class="text-muted"><a href="{{url('/')}}">Giriş Yap</a></p>
-                        </div>
-
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- login area end -->
 
-   <!-- JS
+                    <div class="login-register-bg order-1 order-lg-2 col-lg-7 col-12">
+                        <div class="content">
+                            <h1>Sign in</h1>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div><!-- Content Body End -->
+
+    </div>
+
+    <!-- JS
 ============================================ -->
 
     <!-- Global Vendor, plugins & Activation JS -->
@@ -98,6 +105,7 @@
     <script src="{{asset('admintema')}}/assets/js/plugins/tippy4.min.js.js"></script>
     <!--Main JS-->
     <script src="{{asset('admintema')}}/assets/js/main.js"></script>
+
 </body>
 
 </html>
