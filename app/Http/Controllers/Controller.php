@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterPostRequest;
 use Illuminate\Support\Str;
 use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -210,5 +211,18 @@ class Controller extends BaseController
         }
         public function showResetForm(Request $request, $token = null){
             return view('reset')->with(['token'=>$token, 'email'=>$request->email]);
+        }
+        public function orders()
+        {
+          $orders=Order::with('getUser')->with('getProduct')->orderBy('date','DESC')->get();
+          return view('orders',compact('orders'));
+        }
+        public function orderUpdate(Request $request)
+        {
+            $order=Order::whereId($request->id)->first();
+            $order->status=$request->status;
+            $order->save();
+            toastr()->success('Sipariş durumu güncellendi', 'Başarılı');
+            return redirect()->back();
         }
 }

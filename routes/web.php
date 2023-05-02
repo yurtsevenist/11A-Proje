@@ -35,6 +35,8 @@ Route::post('reset', [Controller::class, 'resetPassword'])->name('resetPassword'
 Route::post('loginPost', [Controller::class, 'loginPost'])->name('loginPost');
 Route::get('products', [Controller::class, 'products'])->name('products');
 Route::get('customers', [Controller::class, 'customers'])->name('customers');
+Route::get('orders', [Controller::class, 'orders'])->name('orders');
+Route::post('orderUpdate', [Controller::class, 'orderUpdate'])->name('orderUpdate');
 Route::post('productDelete', [Controller::class, 'productDelete'])->name('productDelete');
 Route::post('userDelete', [Controller::class, 'userDelete'])->name('userDelete');
 Route::get('signOut', [Controller::class, 'signOut'])->name('signOut');
