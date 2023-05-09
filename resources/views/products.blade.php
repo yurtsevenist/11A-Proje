@@ -103,6 +103,7 @@
     });
 </script>
 <script>
+    //ürün güncelleme
     $(function(){
        $('.update-click').click(function(){
         id=$(this)[0].getAttribute('pid');
