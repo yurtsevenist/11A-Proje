@@ -42,5 +42,5 @@ Route::post('userDelete', [Controller::class, 'userDelete'])->name('userDelete')
 Route::get('signOut', [Controller::class, 'signOut'])->name('signOut');
 Route::post('registerPost', [Controller::class, 'registerPost'])->name('registerPost');
 Route::post('userUpdatePost', [Controller::class, 'userUpdatePost'])->name('userUpdatePost');
-
+Route::post('productAdd', [Controller::class, 'productAdd'])->name('productAdd');
 

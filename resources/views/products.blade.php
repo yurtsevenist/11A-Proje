@@ -12,7 +12,7 @@
                                 <h3 class="title">Ürün Listesi</h3>
                             </div>
                             <div class="col-md-4 col-4 text-right">
-                                <a class="btn btn-md btn-dark" title="Ürün Ekle" href="#"><i class="ti-plus"></i></a>
+                                <a class="btn btn-md btn-dark add-click" title="Ürün Ekle" href="#"><i class="ti-plus"></i></a>
                             </div>
                            </div>
                         </div>
@@ -65,6 +65,7 @@
                 <!--Export Data Table End-->
              </div>
              @include('productDeleteModal')
+             @include('addProductModal')
         </div><!-- Content Body End -->
 
 
@@ -85,4 +86,11 @@
            });
         });
  </script>
+ <script>
+    $(function(){
+       $('.add-click').click(function(){
+        $('#addProduct').modal();
+       });
+    });
+</script>
     @endsection

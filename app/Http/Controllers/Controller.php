@@ -111,7 +111,7 @@ class Controller extends BaseController
     }
     public function products()
     {
-        $urunler = Product::orderBy('number', 'ASC')->get();
+        $urunler = Product::orderBy('created_at', 'DESC')->get();
         return view('products', compact('urunler'));
     }
     public function productDelete(Request $request)
@@ -224,5 +224,42 @@ class Controller extends BaseController
             $order->save();
             toastr()->success('Sipariş durumu güncellendi', 'Başarılı');
             return redirect()->back();
+        }
+        public function productAdd(Request $request)
+        {
+            // dd($request);
+           try {
+            if ($request->hasFile('photo')) {
+                $mimetype = $request->photo->extension();
+                do {
+                    $kod = Str::random(6);
+                } while (Product::whereCode($kod)->exists());
+
+                $newName = $kod . '.' . $mimetype;
+                $request->photo->move('productsimages', $newName);
+                $kayit=new Product;
+                $kayit->code=$kod;
+                $kayit->name=$request->pname;
+                $kayit->size=$request->size;
+                $kayit->number=$request->number;
+                $kayit->price=$request->price;
+                $kayit->category=$request->category;
+                $kayit->color=$request->color;
+                $kayit->photo = 'productsimages/' . $newName;
+                $kayit->save();
+                toastr()->success('Ürün Eklendi', 'Başarılı');
+                return redirect()->back();
+              }
+              else
+              {
+                toastr()->info('Ürün resmi eksik olduğu için kayıt yapılmadı', 'Bilgilendirme');
+                return redirect()->back();
+              }
+
+
+           } catch (\Throwable $th) {
+            toastr()->error('Beklenmedik bir hata meydana geldi', 'Hata');
+            return redirect()->back();
+           }
         }
 }
