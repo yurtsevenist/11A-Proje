@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterPostRequest;
+use App\Models\Image;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Order;
@@ -247,6 +248,11 @@ class Controller extends BaseController
                 $kayit->color=$request->color;
                 $kayit->photo = 'productsimages/' . $newName;
                 $kayit->save();
+                $image=new Image;
+                $image->pid=$kayit->id;
+                $image->photo='productsimages/' . $newName;
+                $image->order=1;
+                $image->save();
                 toastr()->success('Ürün Eklendi', 'Başarılı');
                 return redirect()->back();
               }

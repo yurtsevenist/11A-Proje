@@ -49,7 +49,10 @@
                                         <td>{{$urun->size}}</td>
                                         <td class="text-center">
                                            <a class="btn btn-sm btn-info" title="Görüntüle" href="#"><i class="ti-eye"></i></a>
-                                           <a class="btn btn-sm btn-primary" title="Güncelle" href="#"><i class="ti-pencil-alt"></i></a>
+                                           <a class="btn btn-sm btn-primary update-click"
+                                            pid={{$urun->id}} pname={{$urun->name}} category={{$urun->category}} price={{$urun->price}}
+                                            number={{$urun->number}} size={{$urun->size}} color={{$urun->color}}
+                                           title="Güncelle"><i class="ti-pencil-alt"></i></a>
                                            <a class="delete-click btn btn-danger btn-sm text-white"  pid={{$urun->id}} title="Ürünü Sil"><i class="ti-trash"></i></a>
 
                                       </td>
@@ -64,8 +67,10 @@
                 </div>
                 <!--Export Data Table End-->
              </div>
+             {{-- @include('addProductModal') --}}
              @include('productDeleteModal')
-             @include('addProductModal')
+             @include('updateProductModal')
+
         </div><!-- Content Body End -->
 
 
@@ -89,7 +94,22 @@
  <script>
     $(function(){
        $('.add-click').click(function(){
-        $('#addProduct').modal();
+        $('#updateProduct').modal();
+       });
+    });
+</script>
+<script>
+    $(function(){
+       $('.update-click').click(function(){
+        $('#pid').val($(this)[0].getAttribute('pid'));
+        $('#pname').val($(this)[0].getAttribute('pname'));
+        $('#size').val($(this)[0].getAttribute('size'));
+        $('#color').val($(this)[0].getAttribute('color'));
+        $('#number').val($(this)[0].getAttribute('number'));
+        $('#price').val($(this)[0].getAttribute('price'));
+        $('#category').val($(this)[0].getAttribute('category'));
+        $('#category').trigger('change');
+        $('#updateProduct').modal();
        });
     });
 </script>
