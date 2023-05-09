@@ -12,7 +12,7 @@
                                 <h3 class="title">Ürün Listesi</h3>
                             </div>
                             <div class="col-md-4 col-4 text-right">
-                                <a class="btn btn-md btn-dark add-click" title="Ürün Ekle" href="#"><i class="ti-plus"></i></a>
+                                <a class="btn btn-md btn-dark add-click" pid=0 title="Ürün Ekle" href="#"><i class="ti-plus"></i></a>
                             </div>
                            </div>
                         </div>
@@ -94,6 +94,10 @@
  <script>
     $(function(){
        $('.add-click').click(function(){
+        id=$(this)[0].getAttribute('pid');
+        $('#pid').val(id);
+        $('#modal-title').text("Ürün Ekle");
+         $('#modal-button').text("Ekle");
         $('#updateProduct').modal();
        });
     });
@@ -101,7 +105,19 @@
 <script>
     $(function(){
        $('.update-click').click(function(){
-        $('#pid').val($(this)[0].getAttribute('pid'));
+        id=$(this)[0].getAttribute('pid');
+        if(id!=0)
+        {
+            $('#modal-title').text("Ürün Güncelle");
+            $('#modal-button').text("Güncelle");
+
+        }
+        else
+        {
+            $('#modal-title').text("Ürün Ekle");
+            $('#modal-button').text("Ekle");
+        }
+        $('#pid').val(id);
         $('#pname').val($(this)[0].getAttribute('pname'));
         $('#size').val($(this)[0].getAttribute('size'));
         $('#color').val($(this)[0].getAttribute('color'));

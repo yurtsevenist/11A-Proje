@@ -230,37 +230,74 @@ class Controller extends BaseController
         {
             // dd($request);
            try {
-            if ($request->hasFile('photo')) {
-                $mimetype = $request->photo->extension();
-                do {
-                    $kod = Str::random(6);
-                } while (Product::whereCode($kod)->exists());
+             if($request->pid==0)//ürün ekleme yapılacak
+             {
+                if ($request->hasFile('photo')) {
+                    $mimetype = $request->photo->extension();
+                    do {
+                        $kod = Str::random(6);
+                    } while (Product::whereCode($kod)->exists());
 
-                $newName = $kod . '.' . $mimetype;
-                $request->photo->move('productsimages', $newName);
-                $kayit=new Product;
-                $kayit->code=$kod;
-                $kayit->name=$request->pname;
-                $kayit->size=$request->size;
-                $kayit->number=$request->number;
-                $kayit->price=$request->price;
-                $kayit->category=$request->category;
-                $kayit->color=$request->color;
-                $kayit->photo = 'productsimages/' . $newName;
-                $kayit->save();
-                $image=new Image;
-                $image->pid=$kayit->id;
-                $image->photo='productsimages/' . $newName;
-                $image->order=1;
-                $image->save();
-                toastr()->success('Ürün Eklendi', 'Başarılı');
-                return redirect()->back();
-              }
-              else
-              {
-                toastr()->info('Ürün resmi eksik olduğu için kayıt yapılmadı', 'Bilgilendirme');
-                return redirect()->back();
-              }
+                    $newName = $kod . '.' . $mimetype;
+                    $request->photo->move('productsimages', $newName);
+                    $kayit=new Product;
+                    $kayit->code=$kod;
+                    $kayit->name=$request->pname;
+                    $kayit->size=$request->size;
+                    $kayit->number=$request->number;
+                    $kayit->price=$request->price;
+                    $kayit->category=$request->category;
+                    $kayit->color=$request->color;
+                    $kayit->photo = 'productsimages/' . $newName;
+                    $kayit->save();
+                    $image=new Image;
+                    $image->pid=$kayit->id;
+                    $image->photo='productsimages/' . $newName;
+                    $image->order=1;
+                    $image->save();
+                    toastr()->success('Ürün Eklendi', 'Başarılı');
+                    return redirect()->back();
+                  }
+                  else
+                  {
+                    toastr()->info('Ürün resmi eksik olduğu için kayıt yapılmadı', 'Bilgilendirme');
+                    return redirect()->back();
+                  }
+
+             }
+             else
+             {
+                 $kayit=Product::whereId($request->pid)->first();
+                 if($kayit)
+                 {
+                    if ($request->hasFile('photo')) {
+                        $mimetype = $request->photo->extension();
+                        $newName = $kayit->code . '.' . $mimetype;
+                        $request->photo->move('productsimages', $newName);
+                        $kayit->code=$kayit->code;
+                        $kayit->name=$request->pname;
+                        $kayit->size=$request->size;
+                        $kayit->number=$request->number;
+                        $kayit->price=$request->price;
+                        $kayit->category=$request->category;
+                        $kayit->color=$request->color;
+                        $kayit->photo = 'productsimages/' . $newName;
+                        $kayit->save();
+                        $image=new Image;
+                        $image->pid=$kayit->id;
+                        $image->photo='productsimages/' . $newName;
+                        $image->order=1;
+                        $image->save();
+                        toastr()->success('Ürün Güncellendi', 'Başarılı');
+                        return redirect()->back();
+                      }
+                      else
+                      {
+                        toastr()->info('Ürün resmi eksik olduğu için kayıt yapılmadı', 'Bilgilendirme');
+                        return redirect()->back();
+                      }
+                 }
+             }
 
 
            } catch (\Throwable $th) {

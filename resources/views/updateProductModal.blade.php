@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Ürün Güncelle</h5>
+                <h5 class="modal-title" id="modal-title">Ürün Güncelle</h5>
                 <button class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
             </div>
             <form action="{{route('productAdd')}}" method="POST" enctype="multipart/form-data">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="button button-primary">Güncelle</button>
+                        <button class="button button-primary" id="modal-button">Güncelle</button>
                         <button class="button button-danger" data-dismiss="modal">Çıkış</button>
 
 
