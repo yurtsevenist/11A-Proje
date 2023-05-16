@@ -20,6 +20,9 @@
             <ul>
                 <li><a href="{{url('profil')}}"><i class="ti-user"></i> <span>Profil</span></a></li>
             </ul>
+            <ul>
+                <li><a href="{{route('signOut')}}"><i class="zmdi zmdi-lock-open"></i> <span>Oturumu Kapat</span></a></li>
+            </ul>
         </nav>
 
     </div>
