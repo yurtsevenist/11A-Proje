@@ -25,6 +25,8 @@
                                         <th>Adı Soyadı</th>
                                         <th>E-Posta Adresi</th>
                                         <th>Yetki</th>
+                                        <th>Sipariş Sayısı</th>
+                                        <th>Toplam Harcama</th>
                                         <th>İşlemler</th>
                                     </tr>
                                 </thead>
@@ -38,6 +40,8 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>@if($user->who==0) Kullanıcı @else Yönetici @endif</td>
+                                        <td>{{$user->getOrder->sum('number')}}</td>
+                                        <td>${{$user->getOrder->sum('total')}}</td>
                                         <td class="text-center">
                                            <a class="edit-click btn btn-sm btn-primary" title="Güncelle" uid={{$user->id}} href="#"><i class="ti-pencil-alt"></i></a>
                                            <a class="delete-click btn btn-danger btn-sm text-white"  uid={{$user->id}} title="Müşteri Sil"><i class="ti-trash"></i></a>
@@ -64,7 +68,7 @@
 
     @endsection
     @section('js')
-    
+
 
     <script>
         $(function(){

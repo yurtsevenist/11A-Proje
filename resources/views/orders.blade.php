@@ -25,29 +25,40 @@
                                         <th>Adı Soyadı</th>
                                         <th>E-Posta Adresi</th>
                                         <th>Ürün Adı</th>
-                                        <th>Birim Fiyat</th>
+                                        <th>Alış Fiyatı</th>
+                                        <th>Satış Fiyatı</th>
+                                        <th>KDV</th>
                                         <th>Adet</th>
                                         <th>Kargo Bedeli</th>
                                         <th>Toplam Fiyat</th>
+                                        <th>Toplam KDV</th>
+                                        <th>Toplam Kazanç</th>
                                         <th>Tarih</th>
-                                        <th>statusu</th>
+                                        <th>Durumu</th>
                                         <th>İşlemler</th>
                                     </tr>
                                 </thead>
                               <tbody>
                                 @php($sira=0)
+                                @php($toplam=0)
                                 @foreach ($orders as $order )
                                 @php($sira++)
+                                @php($toplam+=($order->number*$order->getProduct->buyprice)-(($order->number*$order->getProduct->price)*$order->getProduct->tax))
                                     <tr>
                                         <td>{{$sira}}</td>
                                         <td>{{$order->getUser->name}}</td>
                                         <td>{{$order->getUser->email}}</td>
                                         <td>{{$order->getProduct->name}}</td>
+                                        <td>${{$order->getProduct->buyprice}}</td>
                                         <td>${{$order->getProduct->price}}</td>
-
+                                        <td>%{{$order->getProduct->tax*100}}</td>
                                         <td>{{$order->number}}</td>
                                         <td>@if($order->cargo==0) Kargo Bedeli Yok @else ${{$order->cargo}} @endif</td>
                                         <td>${{($order->number*$order->getProduct->price)+$order->cargo}}</td>
+                                        <td>${{($order->number*$order->getProduct->price)*$order->getProduct->tax}}</td>
+                                        <td>${{($order->number*$order->getProduct->buyprice)-(($order->number*$order->getProduct->price)*$order->getProduct->tax)}}</td>
+
+
                                         <td>{{Carbon\Carbon::parse($order->date)->format('d.m.Y')}}</td>
                                         <td>
                                             @if($order->status==1)
@@ -79,8 +90,17 @@
                             </table>
 
                         </div>
+                        <div class="row">
+                            <div class="col-md-8">
+
+                            </div>
+                            <div class="col-md-4 text-center fw-bold fs-2">
+                              <h4><b>Toplam Kazanç :</b> ${{round($toplam,2)}}</h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <!--Export Data Table End-->
              </div>
              {{-- @include('userDeleteModal')--}}

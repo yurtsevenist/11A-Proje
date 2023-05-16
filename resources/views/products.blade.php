@@ -26,10 +26,13 @@
                                         <th>Ürün Adı</th>
                                         <th>Ürün Kodu</th>
                                         <th>Kategori</th>
+                                        <th>Alış Fiyatı</th>
                                         <th>Fiyatı</th>
+                                        <th>Kdv</th>
                                         <th>Adedi</th>
                                         <th>Renk</th>
                                         <th>Beden</th>
+                                        <th>Satış Adedi</th>
                                         <th>İşlemler</th>
                                     </tr>
                                 </thead>
@@ -43,10 +46,20 @@
                                         <td>{{$urun->name}}</td>
                                         <td>{{$urun->code}}</td>
                                         <td>{{$urun->category}}</td>
-                                        <td>{{$urun->price}}</td>
+                                        <td>${{$urun->buyprice}}</td>
+                                        <td>${{$urun->price}}</td>
+                                        <td>%{{$urun->tax*100}}</td>
                                         <td>{{$urun->number}}</td>
                                         <td>{{$urun->color}}</td>
                                         <td>{{$urun->size}}</td>
+                                        <td>
+                                            {{-- @php($satisadet=0)
+                                         @foreach ($urun->getOrder as $order)
+                                            @php($satisadet+=$order->number)
+                                        @endforeach
+                                        {{$satisadet}} --}}
+                                        {{$urun->getOrder->sum('number')}}
+                                    </td>
                                         <td class="text-center">
                                            <a class="btn btn-sm btn-info" title="Görüntüle" href="#"><i class="ti-eye"></i></a>
                                            <a class="btn btn-sm btn-primary update-click"

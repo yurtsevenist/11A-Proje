@@ -28,7 +28,7 @@ class Controller extends BaseController
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             if (Auth::user()->who == 1) {
                 toastr()->success('Hoşgeldin ' . Auth::user()->name, 'Karşılama');
-                return view('main');
+                return redirect()->route('main');
             } else {
                 toastr()->info('Sayın ' . Auth::user()->name . ' yönetici yetkiniz bulunmamaktadır', 'Bilgilendirme');
                 return view('login');
@@ -87,6 +87,13 @@ class Controller extends BaseController
             return redirect()->back();
         }
     }
+    public function main()
+    {
+        $customers=User::get();
+        $urunsayisi=Product::get();
+        $siparissayisi=Order::get();
+        return view('main',compact('customers','urunsayisi','siparissayisi'));
+    }
     public function userUpdatePost(Request $request)
     {
 
@@ -113,6 +120,12 @@ class Controller extends BaseController
     public function products()
     {
         $urunler = Product::orderBy('created_at', 'DESC')->get();
+        foreach($urunler as $urun)
+        {
+            $urun->buyprice=$urun->price-($urun->price*0.5);
+            $urun->tax=0.08;
+            $urun->save();
+        }
         return view('products', compact('urunler'));
     }
     public function productDelete(Request $request)

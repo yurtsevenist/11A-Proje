@@ -6,7 +6,7 @@
 
         <nav class="side-header-menu" id="side-header-menu">
             <ul>
-                <li><a href="{{url('main')}}"><i class="ti-home"></i> <span>Anasayfa</span></a></li>
+                <li><a href="{{route('main')}}"><i class="ti-home"></i> <span>Anasayfa</span></a></li>
             </ul>
             <ul>
                 <li><a href="{{route('products')}}"><i class="ti-bag"></i> <span>Ürünler</span></a></li>
